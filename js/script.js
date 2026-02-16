@@ -4,7 +4,7 @@
 //4 controllare con for quali numeri sono stati ricordati correttamente
 const instructionsEl = document.getElementById('instructions')
 const numberListEl = document.getElementById('numbers-list')
-
+const answerFormEl = document.getElementById('answers-form')
 const numbOne = Math.floor((Math.random() * 50)+1);
 const numbTwo = Math.floor((Math.random() * 50)+1);
 const numbThree = Math.floor((Math.random() * 50)+1);
@@ -24,6 +24,30 @@ setTimeout(function(){
 },500)
 setTimeout(function(){
     numberListEl.innerHTML=[];
-    document.getElementById('answers-form').classList.remove('d-none')
+    answerFormEl.classList.remove('d-none')
     
 },3000)
+
+answerFormEl.addEventListener('submit',function(e){
+    e.preventDefault()
+    let userArray = [];
+    userArray.push(Number(document.getElementById('one').value));
+    userArray.push(Number(document.getElementById('two').value));
+    userArray.push(Number(document.getElementById('three').value));
+    userArray.push(Number(document.getElementById('four').value));
+    userArray.push(Number(document.getElementById('five').value));
+    console.log(userArray);
+    let correctArray = [];
+    for (let index = 0; index < userArray.length; index++) {
+        const user_number = userArray[index];
+        for (let index = 0; index < randomArray.length; index++) {
+            const random_number = randomArray[index];
+            if(user_number===random_number){
+                correctArray.push(user_number)
+            }
+        }
+    }
+    console.log('numeri indovinati',correctArray);
+    
+})
+

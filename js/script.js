@@ -48,6 +48,8 @@ answerFormEl.addEventListener('submit',function(e){
         }
     }
     console.log('numeri indovinati',correctArray);
+    const messageEl = document.getElementById('message');
+    messageEl.innerText = `Hai indovinato: ${correctArray}`
     
 })
 

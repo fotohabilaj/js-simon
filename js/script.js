@@ -21,12 +21,12 @@ setTimeout(function(){
         items += `<li>${randomArray[i]}</li>`
     }
     numberListEl.innerHTML = items;
-},500)
+},5000)
 setTimeout(function(){
     numberListEl.innerHTML=[];
     answerFormEl.classList.remove('d-none')
     
-},3000)
+},30000)
 
 answerFormEl.addEventListener('submit',function(e){
     e.preventDefault()
@@ -38,18 +38,20 @@ answerFormEl.addEventListener('submit',function(e){
     userArray.push(Number(document.getElementById('five').value));
     console.log(userArray);
     let correctArray = [];
+    let correctCount = 0;
     for (let index = 0; index < userArray.length; index++) {
         const user_number = userArray[index];
         for (let index = 0; index < randomArray.length; index++) {
             const random_number = randomArray[index];
             if(user_number===random_number){
-                correctArray.push(user_number)
+                correctArray.push(user_number);
+                correctCount++
             }
         }
     }
     console.log('numeri indovinati',correctArray);
     const messageEl = document.getElementById('message');
-    messageEl.innerText = `Hai indovinato: ${correctArray}`
+    messageEl.innerText = `Hai indovinato ${correctCount} numeri: ${correctArray}`
     
 })
 

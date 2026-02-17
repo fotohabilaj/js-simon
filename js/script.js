@@ -21,12 +21,12 @@ setTimeout(function(){
         items += `<li>${randomArray[i]}</li>`
     }
     numberListEl.innerHTML = items;
-},5000)
+},3000)
 setTimeout(function(){
     numberListEl.innerHTML=[];
     answerFormEl.classList.remove('d-none')
     
-},30000)
+},33000)
 
 answerFormEl.addEventListener('submit',function(e){
     e.preventDefault()

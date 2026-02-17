@@ -5,13 +5,18 @@
 const instructionsEl = document.getElementById('instructions')
 const numberListEl = document.getElementById('numbers-list')
 const answerFormEl = document.getElementById('answers-form')
-const numbOne = Math.floor((Math.random() * 50)+1);
-const numbTwo = Math.floor((Math.random() * 50)+1);
-const numbThree = Math.floor((Math.random() * 50)+1);
-const numbFour = Math.floor((Math.random() * 50)+1);
-const numbFive = Math.floor((Math.random() * 50)+1);
 
-const randomArray = [numbOne,numbTwo,numbThree,numbFour,numbFive]
+function generateNumbersToGuess(limit, min, max){
+    const numberToGuess = [];
+while(numberToGuess.length < limit){
+const random_number = Math.floor(Math.random()*50)+1;
+if(!numberToGuess.includes(random_number)){
+    numberToGuess.push(random_number)}
+}
+    return numberToGuess
+}
+
+const randomArray = generateNumbersToGuess(5,1,50);
 console.log(randomArray);
 
 setTimeout(function(){
@@ -37,6 +42,7 @@ answerFormEl.addEventListener('submit',function(e){
     userArray.push(Number(document.getElementById('four').value));
     userArray.push(Number(document.getElementById('five').value));
     console.log(userArray);
+
     let correctArray = [];
     let correctCount = 0;
     for (let index = 0; index < userArray.length; index++) {

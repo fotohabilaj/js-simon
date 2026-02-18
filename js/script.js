@@ -42,7 +42,7 @@ answerFormEl.addEventListener('submit',function(e){
     userArray.push(Number(document.getElementById('four').value));
     userArray.push(Number(document.getElementById('five').value));
     console.log(userArray);
-
+    
     let correctArray = [];
     let correctCount = 0;
     for (let index = 0; index < userArray.length; index++) {
@@ -50,8 +50,11 @@ answerFormEl.addEventListener('submit',function(e){
         for (let index = 0; index < randomArray.length; index++) {
             const random_number = randomArray[index];
             if(user_number===random_number){
-                correctArray.push(user_number);
-                correctCount++
+                if(!correctArray.includes(user_number)){
+                  correctCount++
+                  correctArray.push(user_number);  
+                }
+
             }
         }
     }
